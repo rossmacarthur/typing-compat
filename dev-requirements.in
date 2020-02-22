@@ -1,5 +1,5 @@
 # Linting requirements
-black; python_version>="3.6"
+black; python_version>="3.6" and implementation_name=="cpython"
 flake8
 flake8-comprehensions
 flake8-isort
