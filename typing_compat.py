@@ -40,6 +40,13 @@ except ImportError:
 
     else:  # Python <3.7
 
+        def _resolve_via_mro(tp):
+            if hasattr(tp, '__mro__'):
+                for t in tp.__mro__:
+                    if t.__module__ in ('builtins', '__builtin__') and t is not object:
+                        return t
+            return tp
+
         def _get_origin(tp):
             """Emulate the behaviour of Python 3.8 typing module"""
             if isinstance(tp, typing._ClassVar):
@@ -48,16 +55,13 @@ except ImportError:
                 return typing.Union
             elif isinstance(tp, typing.GenericMeta):
                 if hasattr(tp, '_gorg'):
-                    tp = tp._gorg
-                    if hasattr(tp, '__mro__'):
-                        for t in tp.__mro__:
-                            if t.__module__ == 'builtins' and t is not object:
-                                return t
-                    return tp
+                    return _resolve_via_mro(tp._gorg)
                 else:
                     while tp.__origin__ is not None:
                         tp = tp.__origin__
-                    return tp
+                    return _resolve_via_mro(tp)
+            elif hasattr(typing, '_Literal') and isinstance(tp, typing._Literal):
+                return typing.Literal
 
         def _normalize_arg(args):
             if isinstance(args, tuple) and len(args) > 1:

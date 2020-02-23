@@ -1,9 +1,13 @@
 import doctest
+import sys
 import typing as ty
+
+import pytest
 
 from typing_compat import get_args, get_origin
 
 
+@pytest.mark.skipif(sys.version_info < (3,), reason='requires Python 3')
 def test_readme():
     failures, _ = doctest.testfile('README.md')
     assert not failures, 'doctests in README failed'

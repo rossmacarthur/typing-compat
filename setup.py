@@ -44,6 +44,8 @@ setup(
     download_url='{url}/archive/{version}.tar.gz'.format(**metadata),
     project_urls={'Issue Tracker': '{url}/issues'.format(**metadata)},
     classifiers=[
+        'Development Status :: 3 - Alpha',
+        'License :: OSI Approved :: Apache Software License',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         'Programming Language :: Python',
@@ -55,6 +57,7 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: Implementation :: CPython',
+        'Programming Language :: Python :: Implementation :: PyPy',
     ],
     **metadata
 )
