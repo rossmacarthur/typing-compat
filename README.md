@@ -1,6 +1,17 @@
-# typing-compat
-
-Python typing compatibility library.
+<h1 align="center">typing-compat</h1>
+<div align="center">
+  <strong>Python typing compatibility library</a></strong>
+</div>
+<br />
+<div align="center">
+  <a href="https://github.com/rossmacarthur/typing-compat/actions?query=workflow%3Abuild">
+    <img src="https://github.com/rossmacarthur/typing-compat/workflows/build/badge.svg?branch=master" alt="Build status" />
+  </a>
+  <a href="https://github.com/psf/black">
+    <img src="https://img.shields.io/badge/code%20style-black-101010.svg" alt="Code style: black" />
+  </a>
+</div>
+<br />
 
 In Python >=3.8 the `typing.get_origin` and `typing.get_args` functions are
 provided. This library aims to bring the identical behaviour of these functions
